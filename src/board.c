@@ -159,31 +159,7 @@ int8_t score(struct board *b)
 
 bool is_terminal(struct board *b)
 {
-    int8_t first = color_at(b, 0);
-    int8_t second = -1;
-    for (int8_t p = 1; p < W * H; p++)
-    {
-        int8_t current_color = color_at(b, p);
-        // If we haven't seen a second unique color yet
-        if (second == -1)
-        {
-            // If this color hasn't been seen yet
-            if (current_color != first)
-            {
-                second = current_color;
-            }
-        }
-        else // We've already seen two unique colors
-        {
-            // If we find a third unique color on the board...
-            if (current_color != first && current_color != second)
-            {
-                // the board is not terminal
-                return false;
-            }
-        }
-    }
-    return true;
+    return (score_position(b, create_point(0, H - 1)) + score_position(b, create_point(W - 1, 0))) == (W * H);
 }
 
 // Returns a single byte that represents a dense bool
