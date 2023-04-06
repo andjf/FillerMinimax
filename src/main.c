@@ -11,7 +11,7 @@ int main(void)
     print_board(b);
     printf("---------------\n");
     // Calculate and display the best color choice for this board
-    printf("Best color choice: %c\n", color_to_char(best_color(b, 8)));
+    printf("Best color choice: %c\n", color_to_char(best_color(b)));
     // Free the board after use
     free_board(b);
     return 0;
